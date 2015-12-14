@@ -46,12 +46,12 @@ Theta2_grad = zeros(size(Theta2));
 %         that your implementation is correct by running checkNNGradients
 %
 %         Note: The vector y passed into the function is a vector of labels
-%               containing values from 1..K. You need to map this vector into a 
+%               containing values from 1..K. You need to map this vector into a
 %               binary vector of 1's and 0's to be used with the neural network
 %               cost function.
 %
 %         Hint: We recommend implementing backpropagation using a for-loop
-%               over the training examples if you are implementing it for the 
+%               over the training examples if you are implementing it for the
 %               first time.
 %
 % Part 3: Implement regularization with the cost function and gradients.
@@ -62,23 +62,37 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% forward propagation
+X = [ones(m, 1), X];
+hidden = sigmoid(X * Theta1.');
 
+hidden = [ones(m, 1), hidden];
+output = sigmoid(hidden * Theta2.');
 
+% compute the cost function
+for classifier = 1:num_labels
+    J = J + (-(y == classifier).' * log(output(:, classifier)) - (1 - (y == classifier)).' * log(1 - output(:, classifier)));
+end
+J = J / m;
 
+% add regularization to the cost function
+J = J + lambda / (2 * m) * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
 
+% backpropagation
+delta_3 = zeros(m, num_labels);
+for classifier = 1:num_labels
+    delta_3(:, classifier) = output(:, classifier) - (y == classifier);
+end
+delta_2 = delta_3 * Theta2;
+delta_2 = delta_2(:, 2:end) .* sigmoidGradient(X * Theta1.');
 
+% compute the gradient
+Theta1_grad = delta_2.' * X / m;
+Theta2_grad = delta_3.' * hidden / m;
 
-
-
-
-
-
-
-
-
-
-
-
+% regularize the gradient
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + lambda / m * Theta1(:, 2:end);
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + lambda / m * Theta2(:, 2:end);
 
 % -------------------------------------------------------------
 
