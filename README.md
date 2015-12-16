@@ -6,7 +6,7 @@ This repo hosts my solutions to all the programming assignments of the [Machine 
 - [x] Assignment 2: Logistic Regression (11/12/2015)
 - [x] Assignment 3: Multi-class Classification and Neural Networks (12/12/2015)
 - [x] Assignment 4: Neural Network Learning (14/12/2015)
-- [ ] Assignment 5: Regularized Linear Regression and Bias/Variance
+- [x] Assignment 5: Regularized Linear Regression and Bias/Variance (15/12/2015)
 - [ ] Assignment 6: Support Vector Machines
 - [ ] Assignment 7: K-Means Clustering and PCA
 - [ ] Assignment 8: Anomaly Detection and Recommender System
