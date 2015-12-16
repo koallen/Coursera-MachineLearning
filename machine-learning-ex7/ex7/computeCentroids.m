@@ -26,12 +26,11 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
-
+for i = 1:K
+    belong = idx == i;
+    count = sum(belong);
+    centroids(i, :) = sum(X .* repmat(belong, 1, n)) ./ count;
+end
 
 % =============================================================
 
