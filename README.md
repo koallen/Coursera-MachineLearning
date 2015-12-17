@@ -9,7 +9,7 @@ This repo hosts my solutions to all the programming assignments of the [Machine 
 - [x] Assignment 5: Regularized Linear Regression and Bias/Variance (15/12/2015)
 - [x] Assignment 6: Support Vector Machines (16/12/2015)
 - [x] Assignment 7: K-Means Clustering and PCA (16/12/2015)
-- [ ] Assignment 8: Anomaly Detection and Recommender System
+- [x] Assignment 8: Anomaly Detection and Recommender System (17/12/2015)
 
 ## Summary
 To be added.
